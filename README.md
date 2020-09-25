@@ -1,6 +1,6 @@
 # 🙃 Flip-function
 
-Given a function, returns an analagous function with some parameters reversed. Inspired by Haskell's `flip`. Grants flexibility for partial application.
+Given a function, returns the same function with some parameters reversed. Similar to Haskell's `flip`, but permits flipping of more than two parameters. Grants flexibility for partial application.
 
 ## API
 
@@ -26,7 +26,7 @@ Optional. A number specifying the index of the parameter at which to start the r
 
 ### Return
 
-A variant of the argument function with the specified parameters reversed.
+The argument function with some parameters reversed.
 
 ## Examples
 
