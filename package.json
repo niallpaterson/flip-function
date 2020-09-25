@@ -1,0 +1,30 @@
+{
+  "name": "flip-function",
+  "version": "1.0.0",
+  "description": "Flips function parameter order. Similar to Haskell's 'flip', but not limited to two parameters.",
+  "main": "flip.js",
+  "scripts": {
+    "test": "npx ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niallpaterson/flip-function.git"
+  },
+  "keywords": [
+    "flip",
+    "function",
+    "reverse",
+    "parameter",
+    "reverse parameters",
+    "functional programming"
+  ],
+  "author": "NiallJP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niallpaterson/flip-function/issues"
+  },
+  "homepage": "https://github.com/niallpaterson/flip-function#readme",
+  "dependencies": {
+    "ava": "^3.12.1"
+  }
+}
