@@ -48,7 +48,80 @@ it('flips the second and third parameters if passed 2 as second and 1 as third a
   );
 });
 
+it('throws a typeError if passed non-function as first argument', (t) => {
+  const errorTypes = [{}, [], 'string', 1, true, NaN, undefined, null];
+  const correctTypes = [() => { }];
+  t.plan(errorTypes.length + correctTypes.length);
 
+  errorTypes.forEach((type) => {
+    t.throws(() => { 
+      flip(type)
+    }, { 
+      instanceOf: TypeError, 
+      message: `Expected function but recieved ${typeof type}.` 
+    }, 
+    `should throw TypeError if passed ${typeof type}`);
+  
+  });
 
+  correctTypes.forEach((type) => {
+    t.notThrows(() => { 
+      flip(type)
+    },
+    `should not throw TypeError if passed ${typeof type}`);
+  })
+});
 
+it('throws a typeError if not passed number or undefined as second argument', (t) => {
+  const correctFirstParam = () => {};
 
+  const errorTypes = [{}, [], 'string', () => { }, true, NaN, null];
+  const correctTypes = [1, undefined];
+
+  t.plan(errorTypes.length + correctTypes.length);
+
+  errorTypes.forEach((type) => {
+    t.throws(() => { 
+      flip(correctFirstParam, type);
+    }, { 
+      instanceOf: TypeError, 
+      message: `Expected number but recieved ${typeof type}.` 
+    }, 
+    `should throw TypeError if passed ${typeof type}`);
+  });
+
+  correctTypes.forEach((type) => {
+    t.notThrows(() => { 
+      flip(correctFirstParam, type);
+    },
+    `should not throw TypeError if passed ${typeof type}`);
+  })
+});
+
+it('throws a typeError if not passed number or undefined as third argument', (t) => {
+  const correctFirstParam = () => {};
+  const correctSecondParam = 2;
+
+  const errorTypes = [{}, [], 'string', () => { }, true, NaN, null];
+  const correctTypes = [1, undefined];
+
+  t.plan(errorTypes.length + correctTypes.length);
+
+  errorTypes.forEach((type) => {
+    t.throws(() => { 
+      flip(correctFirstParam, correctSecondParam, type);
+    }, { 
+      instanceOf: TypeError, 
+      message: `Expected number but recieved ${typeof type}.` 
+    }, 
+    `should throw TypeError if passed ${typeof type}`);
+  
+  });
+
+  correctTypes.forEach((type) => {
+    t.notThrows(() => { 
+      flip(correctFirstParam, correctSecondParam, type);
+    },
+    `should not throw TypeError if passed ${typeof type}`);
+  })
+});
