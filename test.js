@@ -50,7 +50,7 @@ it('flips the second and third parameters if passed 2 as second and 1 as third a
 
 it('throws a typeError if passed non-function as first argument', (t) => {
   const errorTypes = [{}, [], 'string', 1, true, NaN, undefined, null];
-  const correctTypes = [() => { }];
+  const correctTypes = [func];
   t.plan(errorTypes.length + correctTypes.length);
 
   errorTypes.forEach((type) => {
@@ -58,7 +58,7 @@ it('throws a typeError if passed non-function as first argument', (t) => {
       flip(type)
     }, { 
       instanceOf: TypeError, 
-      message: `Expected function but recieved ${typeof type}.` 
+      message: `Expected function but received ${typeof type}.` 
     }, 
     `should throw TypeError if passed ${typeof type}`);
   
@@ -73,7 +73,7 @@ it('throws a typeError if passed non-function as first argument', (t) => {
 });
 
 it('throws a typeError if not passed number or undefined as second argument', (t) => {
-  const correctFirstParam = () => {};
+  const correctFirstParam = func;
 
   const errorTypes = [{}, [], 'string', () => { }, true, NaN, null];
   const correctTypes = [1, undefined];
@@ -85,7 +85,7 @@ it('throws a typeError if not passed number or undefined as second argument', (t
       flip(correctFirstParam, type);
     }, { 
       instanceOf: TypeError, 
-      message: `Expected number but recieved ${typeof type}.` 
+      message: `Expected number but received ${typeof type}.` 
     }, 
     `should throw TypeError if passed ${typeof type}`);
   });
@@ -99,7 +99,7 @@ it('throws a typeError if not passed number or undefined as second argument', (t
 });
 
 it('throws a typeError if not passed number or undefined as third argument', (t) => {
-  const correctFirstParam = () => {};
+  const correctFirstParam = func;
   const correctSecondParam = 2;
 
   const errorTypes = [{}, [], 'string', () => { }, true, NaN, null];
@@ -112,7 +112,7 @@ it('throws a typeError if not passed number or undefined as third argument', (t)
       flip(correctFirstParam, correctSecondParam, type);
     }, { 
       instanceOf: TypeError, 
-      message: `Expected number but recieved ${typeof type}.` 
+      message: `Expected number but received ${typeof type}.` 
     }, 
     `should throw TypeError if passed ${typeof type}`);
   
@@ -123,5 +123,26 @@ it('throws a typeError if not passed number or undefined as third argument', (t)
       flip(correctFirstParam, correctSecondParam, type);
     },
     `should not throw TypeError if passed ${typeof type}`);
-  })
+  });
 });
+
+it('throws a rangeError if required to flip non-existent parameters', (t) => {
+  t.plan(2);
+
+  t.throws(() => {
+    flip(func, 6);
+  }, {
+    instanceOf: RangeError,
+    message: 'Attempting to flip 6 parameters from index 0, but function has only 5 parameters.'
+  },
+  'should throw RangeError if required to flip non-existant parameters');
+
+  t.throws(() => {
+    flip(func, 4, 3);
+  }, {
+    instanceOf: RangeError,
+    message: 'Attempting to flip 4 parameters from index 3, but function has only 5 parameters.'
+  },
+  'should throw RangeError if required to flip non-existant parameters');
+});
+
