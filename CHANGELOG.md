@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/niallpaterson/flip-function/compare/v1.1.0...v1.1.1) (2020-09-26)
+
+
+### Bug Fixes
+
+* typos in type errors ([cfa8176](https://github.com/niallpaterson/flip-function/commit/cfa81768e9460a71d64fca81542774a4a30f6314))
+
 ## 1.1.0 (2020-09-26)
 
 
