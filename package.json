@@ -1,6 +1,6 @@
 {
   "name": "flip-function",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Flips function parameter order. Similar to Haskell's 'flip', but not limited to two parameters.",
   "main": "flip.js",
   "files": [
