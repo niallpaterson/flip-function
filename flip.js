@@ -16,6 +16,9 @@ module.exports = (f, n = 2, m = 0) => {
   if (typeof m !== 'number' || isNaN(m)) {
     throw new TypeError(`Expected number but received ${typeof m}.`);
   }
+
+  if (f.length < n + m) {
+    throw new RangeError(`Attempting to flip ${n} parameters from index ${m}, but function has only ${f.length} parameters.`)
   }
 
   return flip(f, n, m);
