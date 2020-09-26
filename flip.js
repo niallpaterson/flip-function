@@ -6,15 +6,16 @@ const flip = (f, n = 2, m = 0) => (...a) => f(
 
 module.exports = (f, n = 2, m = 0) => {
   if (typeof f !== 'function') {
-    throw new TypeError(`Expected function but recieved ${typeof f}.`);
+    throw new TypeError(`Expected function but received ${typeof f}.`);
   } 
 
   if (typeof n !== 'number' || isNaN(n)) {
-    throw new TypeError(`Expected number but recieved ${typeof n}.`);
+    throw new TypeError(`Expected number but received ${typeof n}.`);
   }
 
   if (typeof m !== 'number' || isNaN(m)) {
-    throw new TypeError(`Expected number but recieved ${typeof m}.`);
+    throw new TypeError(`Expected number but received ${typeof m}.`);
+  }
   }
 
   return flip(f, n, m);
